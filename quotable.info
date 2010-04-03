@@ -1,0 +1,4 @@
+; $Id$
+name = Quotable
+description = "Replaces the q element with curly quotes and a stylable wrapper"
+core = 6.x

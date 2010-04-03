@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * Implementation of hook_filter().
+ */
+function quotable_filter($op, $delta = 0, $format = -1, $text = '') {
+  switch ($op) {
+    case 'list':
+      return array(0 => t('Quotable filter'));
+    case 'description':
+      return t('Replaces the &lt;q cite="[url]"&gt; element with a &lt;span class="q"&gt; wrapper');
+    case 'process':
+      $replace = preg_replace("/<q[^>]*>(([^<]|<[^\/]|<\/[^q])*)<\/q>/", "<span class=\"q\">&ldquo;\$1&rdquo;</span>", $text);
+      return $replace;
+    default:
+      return $text;
+  }
+}
+
+/**
+ * Implementation of hook_filter_tips().
+ */
+function quotable_filter_tips($delta, $format, $long = FALSE) {
+    return t('Replaces the &lt;q cite="[url]"&gt; element with a &lt;span class="q"&gt; wrapper');
+}
