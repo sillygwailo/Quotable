@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Replaces the <q> element (with optional cite="[url]" attribute) with a span class="q"> wrapper.
+ * Replaces the <q> element (with optional cite="[url]" attribute) with a <span class="q"> wrapper.
  */
 
 /**
