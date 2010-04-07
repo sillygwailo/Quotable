@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Replaces the <q> element (with optional cite="[url]" attribute) with a span class="q"> wrapper.
+ */
+
+/**
  * Implementation of hook_filter().
  */
 function quotable_filter($op, $delta = 0, $format = -1, $text = '') {
