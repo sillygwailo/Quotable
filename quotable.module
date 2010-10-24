@@ -18,16 +18,16 @@ function quotable_filter_info() {
       'quotable_class' => 'quotable',
     ),
     'settings callback' => 'quotable_settings',
-    'process callback' => 'quotable_process',
+    'process callback' => 'quotable_filter_process',
     'tips callback' => 'quotable_tips',
   );
   return $filters;
 }
 
 /**
- * Filter Process callback for Quotable.
+ * Filter process callback for Quotable.
  */
-function quotable_process($text, $filter) {
+function quotable_filter_process($text, $filter) {
   $class = check_plain($filter->settings['quotable_class']);
   $replace = preg_replace('/<q[^>]*>(([^<]|<[^\/]|<\/[^q])*)<\/q>/', "<span class=\"" . $class . "\">&ldquo;\$1&rdquo;</span>", $text);
   return $replace;
