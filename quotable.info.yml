@@ -1,0 +1,4 @@
+name: Quotable
+description: "Replaces the q element with curly quotes and a stylable wrapper"
+core: 8.x
+type: module

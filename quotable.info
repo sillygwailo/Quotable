@@ -1,5 +1,0 @@
-; $Id$
-name = Quotable
-description = "Replaces the q element with curly quotes and a stylable wrapper"
-core = 7.x
-files[] = quotable.module

@@ -1,55 +1,6 @@
 <?php
-// $Id$
 
 /**
  * @file
  * Replaces the <q> element (with optional cite="[url]" attribute) with curly quotes and a <span class="q"> wrapper.
  */
-
-/**
- * Implements hook_filter_info().
- */
-function quotable_filter_info() {
-  $filters = array();
-  $filters['quotable'] = array(
-    'title' => t('Quotable filter'), 
-    'description' => t('Replaces the &lt;q cite="[url]"&gt; element with curly quotes and a &lt;span class="q"&gt; wrapper'),
-    'default settings' => array(
-      'quotable_class' => 'quotable',
-    ),
-    'settings callback' => 'quotable_settings',
-    'process callback' => 'quotable_filter_process',
-    'tips callback' => 'quotable_tips',
-  );
-  return $filters;
-}
-
-/**
- * Filter process callback for Quotable.
- */
-function quotable_filter_process($text, $filter) {
-  $class = check_plain($filter->settings['quotable_class']);
-  $replace = preg_replace('/<q[^>]*>(([^<]|<[^\/]|<\/[^q])*)<\/q>/', "<span class=\"" . $class . "\">&ldquo;\$1&rdquo;</span>", $text);
-  return $replace;
-}
-
-/**
- * Filter tips callback for Quotable.
- */
-function quotable_tips($delta, $format, $long = FALSE) {
-  return t('Replaces the &lt;q cite="[url]"&gt; element with curly quotes and a &lt;span class="q"&gt; wrapper');
-}
-
-/**
- * Filter settings callback for Quotable.
- */
-function quotable_settings($form, &$form_state, $filter, $format, $defaults) {
-  $settings['quotable_class'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Quotable CSS class name'),
-    '#default_value' => isset($filter->settings['quotable_class']) ? $filter->settings['quotable_class'] : $defaults['quotable_class'],
-    '#maxlength' => 32,
-    '#description' => t('The CSS class name to wrap the quote with.'),
-  );
-  return $settings;
-}
